@@ -3,21 +3,25 @@ import random
 import sys
 
 
-def draw_squares(height, width):
-    for i in range(1, 3):
-        pygame.draw.line(screen, LINE_COLOR, (0, SQUARE_SIZE * i), (600, SQUARE_SIZE * i), LINE_WIDTH)
-
-
-def main():
+def draw_board():
     height = 450
     width = 1350
     pygame.init()
-    screen = pygame.display.set_mode((height, width))
+    screen = pygame.display.set_mode((width, height))
     pygame.display.set_caption("Senet")
-    x_co = 400
-    y_co = 300
     bg_color = (255, 255, 255)
     screen.fill(bg_color)
+    for i in range(1, 3):
+        pygame.draw.line(screen, (0, 0, 0), (0, i * (height / 3)), (width, i * (height / 3)), 5)
+    for i in range(1, 11):
+        pygame.draw.line(screen, (0, 0, 0), (i * (width / 10), 0), (i * (width / 10), height), 5)
+    return screen
+
+
+def main():
+    x_co = 400
+    y_co = 300
+    screen = draw_board()
     while True:
         for event in pygame.event.get():
             pygame.draw.rect(screen, (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)), (x_co, y_co, 50, 50))
