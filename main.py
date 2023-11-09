@@ -1,6 +1,4 @@
 import pygame
-import random
-import sys
 
 
 def draw_board():
@@ -24,7 +22,7 @@ def main():
     screen = draw_board()
     while True:
         for event in pygame.event.get():
-            pygame.draw.rect(screen, (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)), (x_co, y_co, 50, 50))
+            pygame.draw.rect(screen, (0, 0, 255), (x_co, y_co, 100, 100))
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
